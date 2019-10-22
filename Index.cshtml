@@ -1,0 +1,58 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">CandyCaneLane1._1</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <partial name="_LoginPartial" />
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="Candy/index">Candies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="Store/index">Stores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="Order/index">Orders</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+@if (User.IsInRole("manager"))
+{
+    <section>
+        <h1>Welcome, Manager!</h1>
+    </section>
+}
+else if (User.IsInRole("employee"))
+{
+    <section>
+        <h1>Welcome,  Employee!</h1>
+    </section>
+}
+else if (User.IsInRole("customer"))
+{
+    <h1>Welcome, Customer!</h1>
+}
+else
+{
+<secttion class="text-center">
+    <h1 class="display-4">Welcome to Candy Cane Lane Everybody</h1>
+    <img src="https://www.kristinakral.blog/wp-content/uploads/2018/10/Kristina-Kral-Screen-Cap-Katy-Perry-Snoop-Dogg-California-Gurls.png" alt="Alternate Text" style="width:100%; height:100%;" />
+</secttion>
+}
